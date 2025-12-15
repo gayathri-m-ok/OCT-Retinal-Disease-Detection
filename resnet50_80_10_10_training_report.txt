@@ -1,0 +1,86 @@
+
+================================================================================
+RESNET50 - COMPREHENSIVE TRAINING & EVALUATION REPORT
+================================================================================
+
+MODEL CONFIGURATION (IMPROVED):
+  Architecture: ResNet50 (Pretrained ImageNet)
+  Transfer Learning: Last 10 layers unfrozen (improved fine-tuning)
+  Classifier: Added BatchNorm layers for better training stability
+  Optimizer: AdamW (LR=0.0005, weight_decay=0.01)
+  Scheduler: CosineAnnealingLR (smoother decay)
+  Epochs: 30
+  Batch Size: 32
+
+DATA CONFIGURATION:
+  Split: 80/10/10 (Train/Val/Test)
+  Train Images: 15967
+  Val Images: 2000
+  Test Images: 2002
+  Classes: ['CNV', 'DME', 'DRUSEN', 'NORMAL']
+  Total Images: 19969
+
+AUGMENTATION APPLIED:
+  ✓ Random Flip (H & V)
+  ✓ Rotation (±20°)
+  ✓ Gaussian Noise (20%)
+  ✓ Gaussian Blur
+  ✓ Brightness/Contrast (±20%)
+  ✓ Elastic Transform
+  ✓ Normalization (mean=0.5, std=0.5)
+
+KEY IMPROVEMENTS MADE:
+  ✓ Unfroze more layers (last 10 instead of 2) for better fine-tuning
+  ✓ Reduced learning rate (0.0005 instead of 0.001) for stable training
+  ✓ Increased weight decay (0.01 instead of 1e-4) for regularization
+  ✓ Switched to AdamW optimizer with better weight decay handling
+  ✓ Used CosineAnnealing scheduler for smoother learning rate decay
+  ✓ Added BatchNorm layers in classifier for training stability
+  ✓ Increased epochs (30 instead of 20) for better convergence
+  ✓ Added gradient clipping (1.0) to prevent exploding gradients
+
+TRAINING METRICS (Per Epoch):
+  Best Training Accuracy: 0.7019
+  Best Validation Accuracy: 0.7390
+  Final Training Loss: 0.7270
+  Final Validation Loss: 0.6282
+
+────────────────────────────────────────────────────────────────────────────────
+FINAL METRICS SUMMARY
+────────────────────────────────────────────────────────────────────────────────
+
+TRAIN SET:
+  Accuracy   : 0.7046
+  Precision  : 0.7187
+  Recall     : 0.7046
+  F1-Score   : 0.6827
+
+VALIDATION SET:
+  Accuracy   : 0.7390
+  Precision  : 0.7659
+  Recall     : 0.7390
+  F1-Score   : 0.7234
+
+TEST SET:
+  Accuracy   : 0.7203
+  Precision  : 0.7327
+  Recall     : 0.7203
+  F1-Score   : 0.7011
+
+────────────────────────────────────────────────────────────────────────────────
+
+OUTPUT FILES:
+  1. resnet50_best_80_10_10.pth              → Trained model weights
+  2. resnet50_80_10_10_all_metrics_curves.png → All metrics per epoch
+  3. resnet50_80_10_10_all_confusion_matrices.png → Confusion matrices for all sets
+  4. resnet50_80_10_10_comprehensive_metrics.csv → CSV summary table
+  5. resnet50_80_10_10_training_report.txt   → This report
+
+ANALYSIS:
+  • Model shows balanced generalization (train/val metrics tracking closely)
+  • No significant overfitting detected
+  • Test performance is reliable indicator of real-world generalization
+  • Hyperparameter improvements should yield better results than previous version
+  • Compare with MobileNetV2 and EfficientNetB0 for final model selection
+
+================================================================================

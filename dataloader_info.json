@@ -1,0 +1,17 @@
+{
+    "train_batches": 618,
+    "val_batches": 1,
+    "test_batches": 8,
+    "batch_size": 32,
+    "image_size": 224,
+    "num_classes": 4,
+    "classes": [
+        "CNV",
+        "DME",
+        "DRUSEN",
+        "NORMAL"
+    ],
+    "train_samples": 19770,
+    "val_samples": 4,
+    "test_samples": 226
+}
